@@ -25,7 +25,11 @@ Clone this repository into your local machine using the terminal (Mac), CMD (Win
 
 ```npm run build```
 
-**Activate Webpack Dev Server**
+**Activate Webpack Dev Server in production mode http://localhost:9000/**
+
+```npm start```
+
+**Activate Webpack Dev Server in development mode http://localhost:9000/**
 
 ```npm run start:dev```
 
