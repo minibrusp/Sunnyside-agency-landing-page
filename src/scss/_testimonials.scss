@@ -1,0 +1,64 @@
+@use 'variables'as var;
+@use 'config'as config;
+
+.testimonials {
+    padding: 60px 15px;
+
+    h2 {
+        margin: 0 auto 30px auto;
+        text-align: center;
+        text-transform: uppercase;
+        color: var.$grayishBlue;
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+    }
+
+    &__items {
+        @include config.flexCenter(column);
+        text-align: center;
+
+        @media screen and (min-width: 1000px) {
+            flex-direction: row;
+        }
+
+        img {
+            border-radius: 50%;
+            height: 71px;
+            width: 71px;
+            margin: 7px auto;
+        }
+
+        &__item {
+            padding: 30px 0;
+
+            @media screen and (min-width: 1000px) {
+                padding: 30px 1rem;
+            }
+
+            .testimonial {
+                margin: 15px auto;
+                font-size: 1rem;
+                line-height: 1.7;
+                color: var.$veryDarkGrayishBlue;
+                max-width: 375px;
+            }
+
+            &__author {
+                margin: 30px auto;
+
+                .author__name {
+                    margin: 10px auto;
+                    font-family: var.$fraunces;
+                    font-weight: 900;
+                    color: var.$veryDarkDesaturatedBlue;
+                }
+
+                .author__occupation {
+                    margin: 20px auto 30px auto;
+                    font-size: 0.7777777777777778rem;
+                    color: var.$grayishBlue;
+                }
+            }
+        }
+    }
+}

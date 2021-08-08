@@ -1,0 +1,302 @@
+@use 'variables'as var;
+@use 'config'as config;
+
+header {
+    background-image: url(../../dist/images/mobile/image-header.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 538px;
+    position: relative;
+    padding: 30px 20px;
+
+    @media screen and (min-width: 500px) {
+        background-image: url(../../dist/images/desktop/image-header.jpg);
+    }
+
+    @media screen and (min-width: 800px) {
+        height: 800px;
+    }
+
+    *:focus-visible {
+        @include config.focusOutline(var.$white);
+    }
+
+    .nav {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+
+        &>a {
+            display: inline-block;
+            position: relative;
+
+            img {
+                display: block;
+
+                @media screen and (min-width: 800px) {
+                    width: 170px;
+                    height: 35px;
+                }
+            }
+
+            &::after {
+                content: '';
+                width: 100%;
+                height: 10px;
+                background-color: var.$yellow;
+                display: block;
+                z-index: -1;
+                border-radius: 5px;
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                transform-origin: left;
+                transform: scaleX(0);
+                transition: transform 0.5s ease;
+
+                @media screen and (min-width: 800px) {
+                    bottom: 0;
+                }
+            }
+
+            &:hover,
+            &:focus {
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+
+        .menu-btn {
+            display: inline-block;
+            height: 27px;
+            width: 27px;
+            cursor: pointer;
+
+            @media screen and (min-width: 800px) {
+                display: none;
+            }
+
+            &__burger {
+                display: inline-block;
+                height: 2px;
+                width: 100%;
+                background-color: var.$white;
+                position: relative;
+                transition: transform 0.3s ease-in-out;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    width: 100%;
+                    background-color: var.$white;
+                    position: absolute;
+                    top: -7px;
+                    right: 0;
+                }
+
+                &::before {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    width: 100%;
+                    background-color: var.$white;
+                    position: absolute;
+                    top: 7px;
+                    right: 0;
+                }
+
+                &.--open {
+                    transform: rotate(720deg);
+                    background: transparent;
+
+                    &::before {
+                        transform: rotate(-45deg) translate(5px, -3px);
+                    }
+
+                    &::after {
+                        transform: rotate(45deg) translate(7px, 5px);
+                    }
+                }
+            }
+        }
+
+
+        .menu-nav {
+            visibility: hidden;
+            opacity: 0;
+            margin: 4.5rem auto 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var.$white;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            text-align: center;
+
+            @include config.flexCenter(column);
+
+            transition: height 0.3s ease-in-out,
+                visibility 0.3s ease-in-out,
+                opacity 0.3s ease-in-out;
+
+            @media screen and (min-width: 800px) {
+                visibility: unset;
+                position: unset;
+                opacity: unset;
+                height: unset;
+                background-color: unset;
+                transition: unset;
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            &::after {
+                content: '\25E2';
+                color: var.$white;
+                position: absolute;
+                top: -40px;
+                right: -3.5px;
+                font-size: 2.5rem;
+                transform: translateY(80px);
+                transition: transform 0.7s;
+
+                @media screen and (min-width: 800px) {
+                    display: none;
+                }
+            }
+
+            &__item {
+                margin: 20px auto;
+
+                @media screen and (min-width: 800px) {
+                    margin: 20px 1.2rem;
+                }
+
+                &:last-of-type {
+
+                    a {
+
+                        padding: 0.9rem 1.4rem;
+                        border-radius: 30px;
+                        font-family: var.$fraunces;
+                        text-transform: uppercase;
+                        font-weight: 700;
+
+                        background-color: var.$yellow;
+                        color: var.$veryDarkDesaturatedBlue;
+                        font-size: 0.9rem;
+
+                        @media screen and (min-width: 800px) {
+                            color: var.$veryDarkDesaturatedBlue;
+                            background-color: var.$white;
+                        }
+
+                        &:hover,
+                        &:focus {
+                            background-color: var.$veryDarkDesaturatedBlue;
+                            color: var.$yellow;
+
+                            @media screen and (min-width: 800px) {
+                                background-color: var.$whiteHeaderNavBtnLast;
+                                color: var.$white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__link {
+                font-size: 1.0666666666666667rem;
+                color: var.$darkGrayishBlue;
+
+                @media screen and (min-width: 800px) {
+                    color: var.$white;
+                    transition: 0.3s color ease, 0.3s background-color ease;
+                }
+
+                &:hover,
+                &:focus {
+                    color: var.$veryDarkDesaturatedBlue;
+
+                    @media screen and (min-width: 800px) {
+                        color: var.$whiteHeaderNavBtn;
+                    }
+
+                }
+            }
+
+            &.--open {
+                visibility: visible;
+                height: 305px;
+                opacity: 1;
+
+
+                &::after {
+                    position: absolute;
+                    top: -40px;
+                    transform: translateY(0px);
+                }
+            }
+        }
+    }
+
+    .hero {
+        margin-top: 4.5rem;
+
+        @include config.flexCenter(column);
+
+        h1 {
+            color: var.$white;
+            text-transform: uppercase;
+            text-align: center;
+
+            font-size: 2.2222222222222223rem;
+            letter-spacing: 5px;
+            font-weight: 900;
+
+            margin-top: 10px;
+            margin-bottom: 50px;
+
+            @media screen and (max-width: 315px) {
+                font-size: 1.7rem;
+            }
+
+            @media screen and (min-width: 800px) {
+                font-size: 3rem;
+                margin-bottom: 6rem;
+            }
+        }
+
+        img {
+            @include config.arrowAnimation;
+        }
+
+        a {
+            img {
+                transition: 0.5s ease opacity;
+            }
+
+            &:hover {
+                img {
+                    opacity: 0.7;
+                }
+            }
+
+        }
+
+
+    }
+
+
+}

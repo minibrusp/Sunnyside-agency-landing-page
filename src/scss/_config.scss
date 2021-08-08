@@ -1,0 +1,38 @@
+@mixin arrowAnimation {
+
+    animation: upAndDownUnli 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+
+    @keyframes upAndDownUnli {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-2.5rem);
+        }
+
+    }
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexCustom($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin colorTransition05Ease($colorOrFill) {
+    transition: $colorOrFill 0.5s ease;
+}
+
+@mixin focusOutline($color) {
+    outline: 2px dashed $color;
+    outline-offset: 0.2rem auto;
+}

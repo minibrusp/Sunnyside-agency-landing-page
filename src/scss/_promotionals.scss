@@ -1,0 +1,261 @@
+@use 'variables'as var;
+@use 'config'as config;
+
+.promotionals {
+
+    img {
+        width: 100%;
+    }
+
+    &__items {
+
+        @media screen and (min-width: 700px) {
+            display: flex;
+            gap: 40px;
+        }
+
+        @media screen and (min-width: 800px) {
+            gap: 0;
+        }
+
+        &__img {
+
+            @media screen and (min-width: 700px) {
+                width: 50%;
+                align-self: center;
+            }
+
+            picture {
+                img {
+                    display: block;
+                }
+            }
+        }
+
+        &__txt {
+            height: 438px;
+            text-align: center;
+            padding: 60px 15px;
+
+            @include config.flexCenter(column);
+
+            @media screen and (min-width: 700px) {
+                width: 50%;
+                height: unset;
+                padding: 60px 30px;
+                margin: 0 auto;
+                max-width: 515px;
+            }
+
+            @media screen and (min-width: 800px) {
+                text-align: left;
+                align-items: flex-start;
+                padding: 15px 30px;
+            }
+
+            @media screen and (min-width: 1000px) {
+                padding: 30px;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 1.7777777777777777rem;
+                font-weight: 900;
+                color: var.$veryDarkDesaturatedBlue;
+
+                @media screen and (min-width: 1000px) {
+                    font-size: 2.2rem;
+                    max-width: 25rem;
+                }
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: var.$darkGrayishBlue;
+                margin-bottom: 40px;
+                margin-top: 20px;
+                max-width: 450px;
+
+                @media screen and (min-width: 700px) {
+                    margin: 1rem 0;
+                }
+
+                @media screen and (min-width: 1000px) {
+                    margin: 1.7rem 0 1.7rem 0;
+                }
+
+                @media screen and (min-width: 1100px) {
+                    margin: 2rem 0 2rem 0;
+                }
+
+            }
+
+            a {
+                text-transform: uppercase;
+                font-family: var.$fraunces;
+                color: var.$veryDarkDesaturatedBlue;
+                font-size: 0.8333333333333334rem;
+                font-weight: 900;
+                position: relative;
+                z-index: 2;
+
+                @media screen and (min-width: 1000px) {
+                    font-size: 0.8888888888888888rem;
+                }
+
+                &::before {
+                    content: "";
+                    height: 10px;
+                    border-radius: 5px;
+                    width: 110%;
+                    position: absolute;
+                    left: -6px;
+                    bottom: -3px;
+                    background-color: var.$yellow;
+                    z-index: -1;
+                    opacity: 0.3;
+                }
+
+                &::after {
+                    content: "";
+                    height: 10px;
+                    border-radius: 5px;
+                    width: 110%;
+                    position: absolute;
+                    left: -6px;
+                    bottom: -3px;
+                    background-color: var.$yellow;
+                    z-index: -1;
+                    opacity: 1;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: 0.3s transform ease;
+                }
+
+                &:hover,
+                &:focus {
+
+                    &::after {
+                        transform: scaleX(1);
+                    }
+                }
+
+            }
+
+        }
+
+        &:nth-of-type(1) {
+
+            @media screen and (min-width: 700px) {
+                flex-direction: row-reverse;
+            }
+
+            .promotionals__items__txt {
+
+                a {
+                    &:focus-visible {
+                        @include config.focusOutline(var.$yellow);
+                        outline-offset: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(2) {
+
+            .promotionals__items__txt {
+
+                a {
+
+                    &::before {
+                        background-color: var.$softRed;
+                    }
+
+                    &::after {
+                        background-color: var.$softRed;
+                    }
+
+                    &:focus-visible {
+                        @include config.focusOutline(var.$softRed);
+                        outline-offset: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        &__img-n-txt {
+            position: relative;
+            text-align: center;
+            color: var.$darkDesaturatedCyan;
+
+            @media screen and (min-width: 700px) {
+                width: 50%;
+                margin: 30px auto;
+            }
+
+            @media screen and (min-width: 800px) {
+                margin: 0;
+            }
+
+            picture {
+                width: 100%;
+
+                img {
+                    display: block;
+                }
+            }
+
+            &__txt {
+                position: absolute;
+                bottom: 2rem;
+                left: 0;
+                padding: 0 15px;
+                width: 100%;
+                margin: 0 auto;
+
+                @media screen and (max-width: 315px) {
+                    bottom: 0.7rem;
+                }
+
+                @media screen and (min-width: 500px) {
+                    bottom: 10rem;
+                }
+
+                @media screen and (min-width: 700px) {
+                    bottom: 3rem;
+                }
+
+                @media screen and (min-width: 800px) {
+                    bottom: 0;
+                }
+
+                @media screen and (min-width: 1000px) {
+                    bottom: 2rem;
+                }
+
+                h2 {
+                    font-size: 28px;
+                    font-weight: 900;
+                    margin: 0.7rem auto;
+                }
+
+                p {
+                    font-size: 16px;
+                    line-height: 1.7;
+                    max-width: 350px;
+                    margin: 16px auto;
+                }
+            }
+
+            &:last-of-type {
+                color: var.$darkBlue;
+            }
+
+
+        }
+
+
+    }
+
+}

@@ -1,0 +1,130 @@
+@use 'variables'as var;
+@use 'config'as config;
+
+footer {
+
+    background-color: var.$darkModerateCyan;
+
+    *:focus-visible {
+        @include config.focusOutline(var.$white);
+        outline-offset: 2rem;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @media screen and (min-width: 700px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .footer__txt-n-icons {
+        max-width: 375px;
+        margin: 0 auto;
+    }
+
+    .footer__logo {
+        height: 140px;
+        @include config.flexCenter(column);
+
+        a {
+            svg {
+                transform: scaleX(1.3912) scaleY(1.4582);
+
+                path {
+                    fill: var.$darkDesaturatedCyan;
+                    @include config.colorTransition05Ease(fill);
+                }
+            }
+
+            &:hover,
+            &:focus {
+                svg {
+                    path {
+                        fill: var.$white;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .footer-menu {
+        @include config.flexCustom(row, space-around, center);
+
+        &__links {
+            color: var.$darkDesaturatedCyan;
+            @include config.colorTransition05Ease(color);
+
+            &:hover,
+            &:focus {
+                color: var.$white;
+            }
+        }
+    }
+
+    .social-icons {
+        margin: 77px auto;
+        @include config.flexCenter(row);
+
+        &__links {
+            display: block;
+            margin: 0 14px;
+
+            path {
+                fill: var.$darkDesaturatedCyan;
+                @include config.colorTransition05Ease(fill);
+            }
+
+            &:hover,
+            &:focus {
+
+                path {
+                    fill: var.$white;
+                }
+            }
+        }
+
+    }
+
+    .attribution {
+        margin: 0 auto;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 1rem 0;
+        color: var.$darkDesaturatedCyan;
+        line-height: 1.7;
+        letter-spacing: 3px;
+        border-top: 1px dashed var.$darkDesaturatedCyan;
+        // width: 85vw;
+
+        p {
+            margin: 0 auto;
+
+            a {
+                color: var.$darkBlue;
+                @include config.colorTransition05Ease(color);
+
+
+                &:hover,
+                &:focus {
+                    color: var.$white;
+                }
+            }
+        }
+
+
+    }
+
+
+}
